@@ -11,7 +11,8 @@ export default function App() {
     const arr = [...JSON.parse(JSON.stringify(list))];
     arr.push(value);
     setlist(arr);
-    const OPENAI_API_KEY = process.env.REACT_APP_API_KEY;
+    const OPENAI_API_KEY =
+      "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";
     axios
       .post(
         "https://api.openai.com/v1/chat/completions",
