@@ -13,33 +13,33 @@ export default function App() {
     arr.push(value);
     setlist(arr);
     const OPENAI_API_KEY = key[0].key;
-    axios
-      .post(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          model: "gpt-3.5-turbo-16k-0613",
-          messages: [{ role: "user", content: value }],
-          temperature: 0.7,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${OPENAI_API_KEY}`,
-          },
-        }
-      )
-      .then((res) => {
-        arr.push(res.data.choices);
-        setdisabled(false);
-        setlist(arr);
+    // axios
+    //   .post(
+    //     "https://api.openai.com/v1/chat/completions",
+    //     {
+    //       model: "gpt-3.5-turbo-16k-0613",
+    //       messages: [{ role: "user", content: value }],
+    //       temperature: 0.7,
+    //     },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization: `Bearer ${OPENAI_API_KEY}`,
+    //       },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     arr.push(res.data.choices);
+    //     setdisabled(false);
+    //     setlist(arr);
 
-        console.log(arr);
-      })
-      .catch((error) => {
-        // 处理错误
-        setdisabled(false);
-        console.log(error);
-      });
+    //     console.log(arr);
+    //   })
+    //   .catch((error) => {
+    //     // 处理错误
+    //     setdisabled(false);
+    //     console.log(error);
+    //   });
   };
 
   return (
