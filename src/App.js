@@ -12,7 +12,7 @@ export default function App() {
     arr.push(value);
     setlist(arr);
     const OPENAI_API_KEY =
-      "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";
+      "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";
 
     axios
       .post(
