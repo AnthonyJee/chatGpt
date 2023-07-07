@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import key from "./data/key.json";
 import axios from "axios";
 import "./App.css";
 export default function App() {
@@ -11,8 +12,7 @@ export default function App() {
     const arr = [...JSON.parse(JSON.stringify(list))];
     arr.push(value);
     setlist(arr);
-    const OPENAI_API_KEY =
-      "sk-HWBigclDISNheM1cZo2gT3BlbkFJ8PXPV9nfFiktRYE1l1OPy";
+    const OPENAI_API_KEY = key[0].key;
     axios
       .post(
         "https://api.openai.com/v1/chat/completions",
