@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 export default function App() {
+  console.log(process.env.REACT_APP_API_KEY);
   const [list, setlist] = useState([]);
   const [value, setvalue] = useState("");
   const [disabled, setdisabled] = useState(false);
@@ -11,7 +12,7 @@ export default function App() {
     const arr = [...JSON.parse(JSON.stringify(list))];
     arr.push(value);
     setlist(arr);
-    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+    const OPENAI_API_KEY = process.env.REACT_APP_API_KEY;
     console.log(OPENAI_API_KEY, "OPENAI_API_KEY");
     axios
       .post(
