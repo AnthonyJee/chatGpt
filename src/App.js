@@ -42,7 +42,7 @@ export default function App() {
             ) : (
               <div className="chat-message" key={index}>
                 <span className="user">ChatGpt:</span>
-                <span className="content">{item[0].message.content}</span>
+                <span className="content">{item[0]?.message.content}</span>
               </div>
             );
           })}
