@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 export default function App() {
-  console.log(process.env.REACT_APP_API_KEY);
   const [list, setlist] = useState([]);
   const [value, setvalue] = useState("");
   const [disabled, setdisabled] = useState(false);
@@ -12,8 +11,7 @@ export default function App() {
     const arr = [...JSON.parse(JSON.stringify(list))];
     arr.push(value);
     setlist(arr);
-    const OPENAI_API_KEY = process.env.REACT_APP_API_KEY;
-    console.log(OPENAI_API_KEY, "OPENAI_API_KEY");
+    const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
     axios
       .post(
         "https://api.openai.com/v1/chat/completions",
@@ -25,7 +23,7 @@ export default function App() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${OPENAI_API_KEY}`,
+            Authorization: `Bearer ${REACT_APP_API_KEY}`,
           },
         }
       )
@@ -33,8 +31,6 @@ export default function App() {
         arr.push(res.data.choices);
         setdisabled(false);
         setlist(arr);
-
-        console.log(arr);
       })
       .catch((error) => {
         // 处理错误
