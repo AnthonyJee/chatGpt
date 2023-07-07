@@ -13,24 +13,14 @@ export default function App() {
     setlist(arr);
     const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
     axios
-      .post(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          model: "gpt-3.5-turbo-16k-0613",
-          messages: [{ role: "user", content: value }],
-          temperature: 0.7,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${REACT_APP_API_KEY}`,
-          },
-        }
-      )
+      .get("http://123.56.14.21:3001/chat", {
+        params: { value, REACT_APP_API_KEY },
+      })
       .then((res) => {
-        arr.push(res.data.choices);
+        arr.push(res.data);
         setdisabled(false);
         setlist(arr);
+        console.log(res);
       })
       .catch((error) => {
         // 处理错误
@@ -38,7 +28,6 @@ export default function App() {
         console.log(error);
       });
   };
-
   return (
     <div>
       <div className="chat-container">
